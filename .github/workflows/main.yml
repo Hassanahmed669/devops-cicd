@@ -3,15 +3,15 @@ name: Run script on EC2
 on:
   pull_request:
     branches: 
-      - main
+      - dev
     types: [closed]
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   deploy_on_main:
-    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+    if: ${{ github.ref == 'refs/heads/dev' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
 
     steps:
