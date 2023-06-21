@@ -6,10 +6,10 @@ on:
       - main
       - stg
     types: [closed]
-  push:
-    branches:
-      - main
-      - stg
+#  push:
+#    branches:
+#      - main
+#      - stg
 
 jobs:
   deploy_on_stg:
