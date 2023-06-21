@@ -11,6 +11,7 @@ on:
 
 jobs:
   deploy_on_main:
+    if: ${{ github.ref == 'dev' }}
     runs-on: ubuntu-latest
 
     steps:
