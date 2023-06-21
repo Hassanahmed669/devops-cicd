@@ -4,16 +4,16 @@ on:
   pull_request:
     branches: 
       - main
-      - dev
+      - stg
     types: [closed]
   push:
     branches:
       - main
-      - dev
+      - stg
 
 jobs:
-  deploy_on_dev:
-    if: ${{ github.ref == 'refs/heads/dev' }}
+  deploy_on_stg:
+    if: ${{ github.ref == 'refs/heads/stg' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
 
       - name: Install AWS CLI      
         run: |
-          echo 'dev branch event'
+          echo 'stg branch event'
           echo ${{ github.event_name }}
           echo $GITHUB_EVENT_NAME
 
