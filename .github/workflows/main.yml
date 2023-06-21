@@ -4,14 +4,15 @@ on:
   pull_request:
     branches: 
       - main
+      - dev
     types: [closed]
   push:
     branches:
       - main
+      - dev
 
 jobs:
   deploy_on_push_main:
-    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +26,6 @@ jobs:
           echo $GITHUB_EVENT_NAME
 
   deploy_on_pr_main:
-    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
 
     steps:
