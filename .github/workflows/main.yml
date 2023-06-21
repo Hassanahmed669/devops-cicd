@@ -1,0 +1,24 @@
+name: Run script on EC2
+
+on:
+  pull_request:
+    branches: 
+      - main
+    types: [closed]
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_on_main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install AWS CLI      
+        run: |
+          echo $github.ref
+          pwd
+          ls -a
