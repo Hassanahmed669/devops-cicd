@@ -19,6 +19,6 @@ jobs:
 
       - name: Install AWS CLI      
         run: |
-          echo $github.ref
+          echo ${{ github.ref }}
           pwd
           ls -a
