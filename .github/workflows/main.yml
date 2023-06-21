@@ -8,12 +8,10 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - '**'
 
 jobs:
-  deploy_on_main:
-    if: ${{ (github.ref == 'refs/heads/main' && github.event_name == 'push') || (github.ref == 'refs/heads/main' && github.event_name == 'pull_request') }}
+  deploy_on_push_main:
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +20,21 @@ jobs:
 
       - name: Install AWS CLI      
         run: |
-          echo ${{ github.ref }}
-          echo $GITHUB_REF
+          echo 'push event'
           echo ${{ github.event_name }}
           echo $GITHUB_EVENT_NAME
+
+  deploy_on_pr_main:
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install AWS CLI
+        run: |
+          echo 'pr event'
+          echo ${{ github.ref }}
+          echo $GITHUB_REF
 
